@@ -23,7 +23,7 @@ def thread_function_startCam():
 def startCam():
     while True:
         imageName = randomString(stringLength=5)+'.jpg'
-        imagePath = 'app/static/img/camera/' + imageName
+        imagePath = 'static/img/camera/' + imageName
         camera.capture(imagePath)
         value = getOCR(imagePath)
         if value == '':

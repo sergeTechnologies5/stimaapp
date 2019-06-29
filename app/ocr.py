@@ -1,7 +1,7 @@
 import cv2
 import sys
 import pytesseract
-def getOCR(value = 'app/static/img/camera/default.jpg'):
+def getOCR(value = 'static/img/camera/default.jpg'):
     # Read image path from command line
     imPath = value
 
