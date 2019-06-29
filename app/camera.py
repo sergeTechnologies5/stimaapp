@@ -32,4 +32,4 @@ def startCam():
     camera.stop_preview()
 
 if __name__ == "__main__":
-    startCam()
+    x = threading.Thread(target=thread_function_startCam())
