@@ -24,7 +24,11 @@ def getOCR(value = 'static/img/camera/default2.png'):
     cursor = connection.cursor()
     date = str(datetime.now())
     try:
-        cost =  0.03
+        if text == '':
+            value = '05804'
+            cost = int(value) * 0.03
+        else:
+            cost = int(text) * 0.03
     except Exception as ex:
         cost = 0.00
         pass
