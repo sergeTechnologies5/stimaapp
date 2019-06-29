@@ -3,7 +3,7 @@ import time
 import random
 import string
 key = cv2. waitKey(1)
-webcam = cv2.VideoCapture(0)
+webcam = cv2.VideoCapture(1)
 
 def randomString(stringLength=10):
     """Generate a random string of fixed length """
