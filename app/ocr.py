@@ -34,8 +34,6 @@ def getOCR(value = 'static/img/camera/default.png'):
    
     # never forget this, if you want the changes to be saved:
     connection.commit()
-
-    connection.close()
     return text
 if __name__ == '__main__':
     print(getOCR())
