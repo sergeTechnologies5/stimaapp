@@ -12,7 +12,8 @@ def randomString(stringLength=10):
     return ''.join(random.choice(letters) for i in range(stringLength))
 
  def thread_function_startCam(self):
-     startCam()
+     
+    startCam()
 def startCam():
     while True:
         imageName = randomString(stringLength=5)+'.jpg'
