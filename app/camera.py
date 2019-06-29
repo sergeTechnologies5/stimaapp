@@ -29,7 +29,7 @@ def startCam():
         if value == '':
             value = getOCR()
         print("value  saved is = " + value)
-        time.sleep(4)
+        time.sleep(180)
     camera.stop_preview()
 
 if __name__ == "__main__":
