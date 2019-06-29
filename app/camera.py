@@ -18,7 +18,7 @@ def startCam():
         camera.capture(imagePath)
 
         value = getOCR(imagePath)
-        if value == None:
+        if value == '':
             value = getOCR()
         print("value  saved is = " + value)
         time.sleep(4)
