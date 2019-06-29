@@ -32,7 +32,7 @@ def create_app(config_class=Config):
     # blueprint for non-auth parts of app
     from app.main import main as main_blueprint
     app.register_blueprint(main_blueprint)
-    x = threading.Thread(target=thread_function_startCam)
+    x = threading.Thread(target=thread_function_startCam())
     return app
 
 from app.models import User, Stima
