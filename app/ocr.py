@@ -1,7 +1,10 @@
 import cv2
 import sys
 import pytesseract
-def getOCR(value = 'static/img/camera/default.jpg'):
+import sqlite3
+from datetime import datetime
+connection = sqlite3.connect("app.db")
+def getOCR(value = 'static/img/camera/default06.png'):
     # Read image path from command line
     imPath = value
 
@@ -18,6 +21,16 @@ def getOCR(value = 'static/img/camera/default.jpg'):
     # Run tesseract OCR on image
     text = pytesseract.image_to_string(im, config=config)
     # Print recognized text
+    cursor = connection.cursor()
+    date = str(datetime.now())
+    cost = int(text) * 0.10
+    cursor.execute('''INSERT INTO stima(value, imageurl, date, cost)
+                        VALUES(?,?,?,?)''', (text,value,date, cost))
+   
+    # never forget this, if you want the changes to be saved:
+    connection.commit()
+
+    connection.close()
     return text
 if __name__ == '__main__':
     print(getOCR())

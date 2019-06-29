@@ -11,6 +11,7 @@ class User(db.Model):
 
 class Stima(db.Model):
     id = db.Column(db.Integer, primary_key=True) # primary keys are required by SQLAlchemy
-    value = db.Column(db.String(100), unique=True)
+    value = db.Column(db.String(100))
+    imageurl = db.Column(db.String(100))
     date = db.Column(db.String(100))
     cost = db.Column(db.String(1000))

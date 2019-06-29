@@ -26,15 +26,15 @@
       <div class="site-wrapper-inner">
 
         <div class="container">
-      
+      <a href="/login">Logout</a>
           <div>
             <div> <h1>METER READING</h1></div>
-            <div id="value"></div>
-            <form action="" method="get">
-                <input type="button" value="ON ALL">
-                <input type="button" value="OFF ALL">
-            </form>
-            
+            <div id="value"> {{value}}</div>
+            <p class="lead">Stima app
+                <p class="lead">
+                <a href="{{url_for('main.on')}}" class="btn btn-lg btn-default">ON ALL</a>
+                <a href="{{url_for('main.off')}}" class="btn btn-lg btn-default">OFF ALL</a>
+                </p>
           </div>
           <div class="mastfoot">
             <div class="inner">

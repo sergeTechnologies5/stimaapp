@@ -6,23 +6,27 @@ from app import db
 
 auth = Blueprint('auth', __name__)
 
-@auth.route('/signup', methods=['POST'])
+@auth.route('/signup', methods=['POST','GET'])
 def signup_post():
-    email = request.form.get('email')
-    name = request.form.get('name')
-    password = request.form.get('password')
-    user = User.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
-    if user: # if a user is found, we want to redirect back to signup page so user can try again
-        return redirect(url_for('auth.signup'))
-    # create new user with the form data. Hash the password so plaintext version isn't saved.
-    new_user = User(email=email, name=name, password=generate_password_hash(password, method='sha256'))
 
-    # add the new user to the database
-    db.session.add(new_user)
-    db.session.commit()
-    return redirect(url_for('auth.login'))
+    if request.method =="POST":
+        email = request.form.get('email')
+        name = request.form.get('name')
+        password = request.form.get('password')
+        user = User.query.filter_by(email=email).first() # if this returns a user, then the email already exists in database
+        if user: # if a user is found, we want to redirect back to signup page so user can try again
+            return redirect(url_for('auth.signup'))
+        # create new user with the form data. Hash the password so plaintext version isn't saved.
+        new_user = User(email=email, name=name, password=generate_password_hash(password, method='sha256'))
 
-@auth.route('/auth', methods=['POST'])
+        # add the new user to the database
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect(url_for('auth.login_post'))
+    else:
+        return render_template('signup.html')
+
+@auth.route('/auth', methods=['POST','GET'])
 def login_post():
     email = request.form.get('email')
     password = request.form.get('password')
@@ -34,9 +38,10 @@ def login_post():
         return redirect(url_for('main.show_login')) # if user doesn't exist or password is wrong, reload the page
     # if the above check passes, then we know the user has the right credentials
     else:
-        if not user.password == password :
-            return redirect(url_for('main.show_login'))
-        return redirect(url_for('main.profile'))
+        if check_password_hash(user.password , password)  :
+            return redirect(url_for('main.profile'))
+            
+        return redirect(url_for('main.show_login'))
 
 @auth.route('/logout')
 def logout():
