@@ -7,7 +7,7 @@ import os
 from dotenv import load_dotenv
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-
+# cc
 camera = PiCamera()
 camera.rotation = 180
 camera.start_preview(alpha = 200)
