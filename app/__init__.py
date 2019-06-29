@@ -5,10 +5,8 @@ import os
 from app.config import Config
 from dotenv import load_dotenv
 import threading
-
 basedir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(basedir, '.env'))
-from app.camera import thread_function_startCam
 
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
