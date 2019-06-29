@@ -4,6 +4,7 @@ import time
 from picamera import PiCamera
 from ocr import getOCR
 import os
+import threading
 from dotenv import load_dotenv
 
 basedir = os.path.abspath(os.path.dirname(__file__))
