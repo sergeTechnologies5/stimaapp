@@ -4,7 +4,7 @@ import pytesseract
 import sqlite3
 from datetime import datetime
 connection = sqlite3.connect("app.db")
-def getOCR(value = 'static/img/camera/default.png'):
+def getOCR(value = 'static/img/camera/default2.png'):
     # Read image path from command line
     imPath = value
 
