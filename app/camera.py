@@ -2,7 +2,7 @@ import random
 import string
 import time
 from picamera import PiCamera
-from app.ocr import getOCR
+from ocr import getOCR
 import os
 from dotenv import load_dotenv
 
