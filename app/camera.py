@@ -11,8 +11,8 @@ def randomString(stringLength=10):
     letters = string.ascii_lowercase
     return ''.join(random.choice(letters) for i in range(stringLength))
 
- def thread_function_startCam(self):
-     
+ def thread_function_startCam(target=startCam()):
+
     startCam()
 def startCam():
     while True:
