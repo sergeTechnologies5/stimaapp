@@ -16,7 +16,6 @@ def startCam():
         imageName = randomString(stringLength=5)+'.jpg'
         imagePath = 'static/img/camera/' + imageName
         camera.capture(imagePath)
-
         value = getOCR(imagePath)
         if value == '':
             value = getOCR()
