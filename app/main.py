@@ -13,9 +13,10 @@ def index():
 @main.route('/profile',  methods=["GET", "POST"] )
 def profile():
     stima = Stima.query.all()
-    if stima :
-        value = str(obj[-1].id)
     value = 0000.0
+    if stima :
+        value = str(stima[-1].value)
+    
     return render_template('dashboard.html',value = value)
 
 
