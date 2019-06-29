@@ -2,7 +2,7 @@ import random
 import string
 import time
 from picamera import PiCamera
-from ocr import getOCR
+from app.ocr import getOCR
 camera = PiCamera()
 camera.rotation = 180
 camera.start_preview(alpha = 200)
