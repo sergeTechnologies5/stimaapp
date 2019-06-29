@@ -4,13 +4,16 @@ from flask_login import LoginManager
 import os
 from app.config import Config
 from dotenv import load_dotenv
+import threading
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(basedir, '.env'))
+from camera import thread_function_startCam
 
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
 def create_app(config_class=Config):
+
     app = Flask(__name__)
     app.config.from_object(config_class)
     db.init_app(app)
@@ -29,7 +32,7 @@ def create_app(config_class=Config):
     # blueprint for non-auth parts of app
     from app.main import main as main_blueprint
     app.register_blueprint(main_blueprint)
-
+    x = threading.Thread(target=thread_function_startCam)
     return app
 
 from app.models import User, Stima
