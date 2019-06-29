@@ -8,7 +8,7 @@ import threading
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(basedir, '.env'))
-from camera import thread_function_startCam
+from app.camera import thread_function_startCam
 
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
