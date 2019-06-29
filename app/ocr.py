@@ -4,7 +4,7 @@ import pytesseract
 import sqlite3
 from datetime import datetime
 connection = sqlite3.connect("app.db")
-def getOCR(value = 'static/img/camera/default2.png'):
+def getOCR(value = 'static/img/camera/default03.jpg'):
     # Read image path from command line
     imPath = value
 
@@ -23,7 +23,12 @@ def getOCR(value = 'static/img/camera/default2.png'):
     # Print recognized text
     cursor = connection.cursor()
     date = str(datetime.now())
-    cost =  int(text)* 0.10
+    try:
+        cost =  int(text)* 0.10
+    except Exception as ex:
+        cost = 0.00
+        pass
+    
     cursor.execute('''INSERT INTO stima(value, imageurl, date, cost)
                         VALUES(?,?,?,?)''', (text,value,date, cost))
    
